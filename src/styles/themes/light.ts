@@ -8,5 +8,9 @@ export default {
     colors: {
         primary: '#FFF',
         secundary: '#FFF'
+    },
+    shadow: {
+        primary: '#CCC',
+        secundary: '#000'
     }
 }

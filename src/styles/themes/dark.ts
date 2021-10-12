@@ -9,4 +9,8 @@ export default {
         primary: '#FFF',
         secundary: '#797A81'
     },
+    shadow: {
+        primary: '#CCC',
+        secundary: '#000'
+    }
 }

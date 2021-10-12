@@ -8,6 +8,8 @@ import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 import usePersistedState from "./utils/usePersistedState";
 
+import { TableArea } from "./components/TableArea";
+
 import { getCurrentMonth, filterListByMonth } from "./helpers/dateFilter";
 
 import { items } from "./data/items";
@@ -24,7 +26,7 @@ const App = () => {
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
 
   useEffect(() => {
-    
+
     setFilteredList( filterListByMonth(list, currentMonth) );
 
   }, [list, currentMonth]);
@@ -36,7 +38,7 @@ const App = () => {
           <app.HeaderText>Controle Financeiro</app.HeaderText>
         </app.Header>
         <app.Body>
-          ...
+          <TableArea list={filteredList}/>
         </app.Body>
       </app.Container>
       <GlobalStyles/>

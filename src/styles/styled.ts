@@ -12,5 +12,9 @@ declare module 'styled-components' {
         primary: string,
         secundary: string
     },
+    shadow: {
+        primary: string,
+        secundary: string
+    }
   }
 }
