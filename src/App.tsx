@@ -15,6 +15,7 @@ import { getCurrentMonth, filterListByMonth } from "./helpers/dateFilter";
 import { items } from "./data/items";
 import { Item } from "./types/Items";
 import { InfoArea } from "./components/InfoArea";
+import { categories } from "./data/categories";
 
 
 
@@ -25,6 +26,8 @@ const App = () => {
   const [list, setList] = useState(items);
   const [filteredList, setFilteredList] = useState<Item[]>([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
 
   const handleChangeMonth = (newMonth: string) => {
     setCurrentMonth(newMonth);
@@ -33,9 +36,27 @@ const App = () => {
 
   useEffect(() => {
 
-    setFilteredList( filterListByMonth(list, currentMonth) );
+    setFilteredList(filterListByMonth(list, currentMonth));
 
   }, [list, currentMonth]);
+
+  useEffect(() => {
+
+    let incomeCount = 0;
+    let expenseCount = 0;
+
+    for(let i in filteredList){
+       if(categories[filteredList[i].category].expense){
+         expenseCount += filteredList[i].value;
+       }else{
+         incomeCount += filteredList[i].value;
+       }
+    }
+
+    setIncome(incomeCount);
+    setExpense(expenseCount);
+
+  }, [filteredList]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -44,11 +65,18 @@ const App = () => {
           <app.HeaderText>Controle Financeiro</app.HeaderText>
         </app.Header>
         <app.Body>
-          <InfoArea currentMonth={currentMonth} onChangeMonth={handleChangeMonth}/>
-          <TableArea list={filteredList}/>
+          <InfoArea
+            currentMonth={currentMonth}
+            onChangeMonth={handleChangeMonth}
+            income={income}
+            expense={expense}
+          />
+          <TableArea
+            list={filteredList}
+          />
         </app.Body>
       </app.Container>
-      <GlobalStyles/>
+      <GlobalStyles />
     </ThemeProvider>
   )
 }
