@@ -1,6 +1,9 @@
 import React from "react";
-import { Item } from "../../types/Items";
 import * as T from './styled';
+
+import { TableItem } from "../TableItem";
+
+import { Item } from "../../types/Items";
 
 type Props = {
     list: Item[];
@@ -19,12 +22,7 @@ export const TableArea = ({ list } : Props ) => {
             </thead>
             <tbody>
                 {list.map((item, key) => (
-                    <tr key={key}>
-                        <td></td>
-                        <td>{item.title}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                   <TableItem key={key}  item={item} />
                 ))}
             </tbody>
         </T.table>
