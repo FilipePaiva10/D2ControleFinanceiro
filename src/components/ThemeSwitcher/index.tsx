@@ -21,12 +21,12 @@ export default ({toogleTheme}: props) => {
                 checked={title === "Dark"}
                 checkedIcon={false}
                 uncheckedIcon={false}
-                width={50}
-                height={20}
-                handleDiameter={25}
+                width={40}
+                height={14}
+                handleDiameter={22}
                 offColor={colors.primary}
                 onColor={colors.secundary}
-                offHandleColor={background.secundary}
+                offHandleColor={background.primary}
                 onHandleColor={colors.primary}
                 activeBoxShadow="0 0 3px #DDD"
                 

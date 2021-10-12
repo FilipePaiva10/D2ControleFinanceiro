@@ -16,6 +16,7 @@ import { items } from "./data/items";
 import { Item } from "./types/Items";
 import { InfoArea } from "./components/InfoArea";
 import { categories } from "./data/categories";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 
 
@@ -32,6 +33,14 @@ const App = () => {
   const handleChangeMonth = (newMonth: string) => {
     setCurrentMonth(newMonth);
   }
+
+  const toggleTheme = () => {
+    if (theme.title !== 'Dark') {
+      setTheme(dark);
+    } else {
+      setTheme(light);
+    }
+  };
 
 
   useEffect(() => {
@@ -63,6 +72,7 @@ const App = () => {
       <app.Container>
         <app.Header>
           <app.HeaderText>Controle Financeiro</app.HeaderText>
+          <ThemeSwitcher toogleTheme={toggleTheme}/>
         </app.Header>
         <app.Body>
           <InfoArea

@@ -2,6 +2,10 @@ import { formatCurrentMonth } from '../../helpers/dateFilter';
 import { ResumeItem } from '../ResumeItem';
 import * as C from './styled';
 
+import { FaArrowAltCircleRight } from "@react-icons/all-files/fa/FaArrowAltCircleRight";
+import { FaArrowAltCircleLeft } from "@react-icons/all-files/fa/FaArrowAltCircleLeft";
+import { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
 type Props = {
     currentMonth: string;
@@ -10,19 +14,21 @@ type Props = {
     expense: number;
 }
 
-export const InfoArea = ({ currentMonth, onChangeMonth, income, expense } : Props) => {
+export const InfoArea = ({ currentMonth, onChangeMonth, income, expense }: Props) => {
+
+    const theme = useContext(ThemeContext);
 
     const handlePrevMonth = () => {
         let [year, month] = currentMonth.split('-');
         let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1);
-        currentDate.setMonth( currentDate.getMonth() - 1); 
+        currentDate.setMonth(currentDate.getMonth() - 1);
         onChangeMonth(`${currentDate.getFullYear()}-${currentDate.getMonth() + 1}`);
     }
 
     const handleNextMonth = () => {
         let [year, month] = currentMonth.split('-');
         let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1);
-        currentDate.setMonth( currentDate.getMonth() + 1); 
+        currentDate.setMonth(currentDate.getMonth() + 1);
         onChangeMonth(`${currentDate.getFullYear()}-${currentDate.getMonth() + 1}`);
     }
 
@@ -30,17 +36,25 @@ export const InfoArea = ({ currentMonth, onChangeMonth, income, expense } : Prop
         <C.Container>
             <C.MonthArea>
                 <C.MonthArrow
-                  onClick={handlePrevMonth}
-                >k</C.MonthArrow>
+                    onClick={handlePrevMonth}
+                >
+                    <FaArrowAltCircleLeft
+                        color={theme.background.primary}
+                    />
+                </C.MonthArrow>
                 <C.MonthTitle>{formatCurrentMonth(currentMonth)}</C.MonthTitle>
                 <C.MonthArrow
                     onClick={handleNextMonth}
-                >s</C.MonthArrow>
+                >
+                    <FaArrowAltCircleRight 
+                         color={theme.background.primary}
+                    />
+                </C.MonthArrow>
             </C.MonthArea>
             <C.ResumeArea>
-                <ResumeItem title="Receitas" value={income}/>
-                <ResumeItem title="Despesas" value={expense}/>
-                <ResumeItem title="Balanço" value={income - expense} color={(income - expense) < 0 ? 'red' : 'green'}/>
+                <ResumeItem title="Receitas" value={income} />
+                <ResumeItem title="Despesas" value={expense} />
+                <ResumeItem title="Balanço" value={income - expense} color={(income - expense) < 0 ? 'red' : 'green'} />
             </C.ResumeArea>
         </C.Container>
     )

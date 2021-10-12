@@ -15,6 +15,7 @@ export default createGlobalStyle`
   
   body {
     transition: all 1s ease 0s, transform 1s ease 0s;
+    background-color: ${props => props.theme.background.primary}
   }
 
 `

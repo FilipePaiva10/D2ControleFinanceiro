@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
-
 `;
 
 export const Header = styled.div`
     background-color: ${props => props.theme.background.secundary};
     height: 150px;
     text-align: center;
+    transition: all 1s ease 0s, transform 1s ease 0s;
 `;
 
 export const HeaderText = styled.h1`
