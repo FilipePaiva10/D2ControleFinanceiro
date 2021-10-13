@@ -39,7 +39,7 @@ export const InfoArea = ({ currentMonth, onChangeMonth, income, expense }: Props
                     onClick={handlePrevMonth}
                 >
                     <FaArrowAltCircleLeft
-                        color={theme.background.primary}
+                        color={theme.background.secundary}
                     />
                 </C.MonthArrow>
                 <C.MonthTitle>{formatCurrentMonth(currentMonth)}</C.MonthTitle>
@@ -47,7 +47,7 @@ export const InfoArea = ({ currentMonth, onChangeMonth, income, expense }: Props
                     onClick={handleNextMonth}
                 >
                     <FaArrowAltCircleRight 
-                         color={theme.background.primary}
+                         color={theme.background.secundary}
                     />
                 </C.MonthArrow>
             </C.MonthArea>

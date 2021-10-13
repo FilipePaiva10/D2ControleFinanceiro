@@ -3,10 +3,10 @@ export default {
 
     background: {
         primary: '#FFF',
-        secundary: '#394053'
+        secundary: '#394053' 
     },
     colors: {
-        primary: '#FFF',
+        primary: '#000',
         secundary: '#FFF'
     },
     shadow: {
@@ -14,3 +14,5 @@ export default {
         secundary: '#000'
     }
 }
+
+//#394053
