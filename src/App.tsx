@@ -17,6 +17,7 @@ import { Item } from "./types/Items";
 import { InfoArea } from "./components/InfoArea";
 import { categories } from "./data/categories";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import ReactTooltip from "react-tooltip";
 
 
 
@@ -85,6 +86,7 @@ const App = () => {
             list={filteredList}
           />
         </app.Body>
+        <ReactTooltip id="tip-top" place="top" effect="solid" />
       </app.Container>
       <GlobalStyles />
     </ThemeProvider>
