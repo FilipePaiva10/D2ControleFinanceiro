@@ -11,11 +11,19 @@ export const TableColumn = styled.td`
 `
 
 export const Category = styled.div<{ bgcolor: string }>`
-    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     padding: 5px 10px;
     border-radius: 5px;
     color: #FFF;
     background-color: ${props => props.bgcolor};
+    margin-right: 5px;
+
+    svg{
+        margin-right: 5px;
+    }
+
 `;
 
 

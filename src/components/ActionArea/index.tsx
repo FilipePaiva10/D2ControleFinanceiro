@@ -8,6 +8,8 @@ import { FaPlusCircle } from "@react-icons/all-files/fa/FaPlusCircle";
 
 type Props = {
     onShowModal: () => void;
+    onSearchText: (search : string) => void;
+    onSetCategory: (category: string) => void;
 }
 
 type categorieOption = {
@@ -15,7 +17,7 @@ type categorieOption = {
     title?: string;
 }
 
-const ActionArea = ({onShowModal} : Props) => {
+const ActionArea = ({onShowModal, onSearchText,  onSetCategory} : Props) => {
 
     const [categoriesOption, setCategoriesOption] = useState<categorieOption[]>([]);
 
@@ -30,6 +32,12 @@ const ActionArea = ({onShowModal} : Props) => {
         }
 
         setCategoriesOption(newCategories);
+    }
+
+    const handleSetCategory = (category: any) => {
+        if(category != undefined){
+            onSetCategory(category);
+        }
     }
 
     const handleAddItem = () => {
@@ -51,15 +59,21 @@ const ActionArea = ({onShowModal} : Props) => {
                     onClick={handleAddItem}
                 />
             </C.AddItem>
-            <C.FilterItem>
-                <C.OptionItem>Todos</C.OptionItem>
+            <C.FilterItem
+                onChange={ (e) => handleSetCategory(e.target.value)}
+            >
+                <C.OptionItem value="all">Todos</C.OptionItem>
                 {categoriesOption.map((item, key) => (
                     <C.OptionItem
                         key={key}
+                        value={item.category}
                     >{item.title}</C.OptionItem>
                 ))}
             </C.FilterItem>
-            <C.SearchItem type="text" placeholder="Buscar Receita/Despesa" />
+            <C.SearchItem 
+             type="text" 
+             onChange={e => onSearchText(e.target.value)}
+             placeholder="Buscar Receita/Despesa" />
         </C.Container>
     )
 }

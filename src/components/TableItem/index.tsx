@@ -36,7 +36,7 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
     };
 
     const onEditItem = (item: Item) => {
-        
+
     };
 
     const onDeleteItem = ({title} : Item) => {
@@ -51,6 +51,7 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
                     bgcolor={categories[item.category].color}
                 >
                     {SetIcon(categories[item.category].title)}
+                    {`    ${categories[item.category].title}`}
                 </C.Category>
             </C.TableColumn>
             <C.TableColumn>{item.title}</C.TableColumn>

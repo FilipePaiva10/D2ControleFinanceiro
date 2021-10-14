@@ -31,6 +31,8 @@ const App = () => {
 
   const [list, setList] = useState(items);
   const [filteredList, setFilteredList] = useState<Item[]>([]);
+  const [search, setSearch] = useState('');
+
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
@@ -51,20 +53,53 @@ const App = () => {
     setShowModal(!showModal);
   }
 
-  const handleAddItem = () => {
+  const handleAddItem = (item: Item) => {
 
     let newlist: Item[] = [...list];
 
     newlist.push({
-      date: new Date(2021, 9, 12),
-      category: 'food',
-      title: 'McDonalds',
-      value: 34.15
+      date: new Date(),
+      category: item.category,
+      title: item.title,
+      value: parseFloat(item.value.toFixed(2))
     });
 
     setList(newlist);
 
     handleShowModal();
+  }
+
+  const handleFilterByCategory = (category: string) => {    
+    console.log("Categoria enviada: " + category);
+    if (category != "all") {
+
+      setFilteredList(filterListByMonth(list, currentMonth));
+
+      let newList = filteredList.filter((item: Item) => {
+        if (item.category == category)
+          return item;
+      });
+
+      setFilteredList(newList);
+
+    } else {
+      setFilteredList(filterListByMonth(list, currentMonth));
+    }
+
+  }
+
+  const handleFilterByTitle = () => {
+
+    if (search != '') {
+      let newList = filteredList.filter((item: Item) => {
+        if (item.title.toLowerCase().indexOf(search.toLowerCase()) >= 0)
+          return item;
+      });
+
+      setFilteredList(newList);
+    } else {
+      setFilteredList(filterListByMonth(list, currentMonth));
+    }
   }
 
   const handleEditItem = (item: Item) => {
@@ -74,7 +109,7 @@ const App = () => {
   const handleDeleteItem = (title: string) => {
 
     let newlist: Item[] = list.filter((item: Item) => {
-        if(item.title != title)
+      if (item.title != title)
         return item;
     });
 
@@ -83,7 +118,14 @@ const App = () => {
 
   useEffect(() => {
 
+    handleFilterByTitle();
+
+  }, [search]);
+
+  useEffect(() => {
+
     setFilteredList(filterListByMonth(list, currentMonth));
+    setSearch('');
 
   }, [list, currentMonth]);
 
@@ -124,6 +166,8 @@ const App = () => {
           />
           <ActionArea
             onShowModal={handleShowModal}
+            onSetCategory={handleFilterByCategory}
+            onSearchText={setSearch}
           />
           <TableArea
             list={filteredList}
