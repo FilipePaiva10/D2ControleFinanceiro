@@ -19,10 +19,13 @@ import { categories } from "./data/categories";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import ReactTooltip from "react-tooltip";
 import ActionArea from "./components/ActionArea";
+import ModalAddItem from "./components/ModalAddItem";
 
 
 
 const App = () => {
+
+  const [showModal, setShowModal] = useState(false);
 
   const [theme, setTheme] = usePersistedState('light', light);
 
@@ -44,6 +47,13 @@ const App = () => {
     }
   };
 
+  const handleShowModal = () => {
+      setShowModal(!showModal);
+  }
+
+  const handleAddItem = () => {
+    handleShowModal();
+  }
 
   useEffect(() => {
 
@@ -87,7 +97,7 @@ const App = () => {
             expense={expense}
           />
           <ActionArea
-
+            onAddItem={handleAddItem}
           />
           <TableArea
             list={filteredList}
@@ -95,6 +105,11 @@ const App = () => {
         </app.Body>
         <ReactTooltip id="tip-top" place="top" effect="solid" />
       </app.Container>
+      {showModal &&
+        <ModalAddItem
+          onCloseModal={handleShowModal}
+        />
+      }
       <GlobalStyles />
     </ThemeProvider>
   )

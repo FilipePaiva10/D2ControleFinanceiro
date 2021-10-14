@@ -6,12 +6,16 @@ import { categories } from '../../data/categories';
 
 import { FaPlusCircle } from "@react-icons/all-files/fa/FaPlusCircle";
 
+type Props = {
+    onAddItem: () => void;
+}
+
 type categorieOption = {
     category: string;
     title?: string;
 }
 
-const ActionArea = () => {
+const ActionArea = ({onAddItem} : Props) => {
 
     const [categoriesOption, setCategoriesOption] = useState<categorieOption[]>([]);
 
@@ -28,6 +32,10 @@ const ActionArea = () => {
         setCategoriesOption(newCategories);
     }
 
+    const handleAddItem = () => {
+        onAddItem();
+    }
+
     useEffect(() => {
         getCategories();
 
@@ -40,6 +48,7 @@ const ActionArea = () => {
                data-for="tip-top"
              > 
                 <FaPlusCircle
+                    onClick={handleAddItem}
                 />
             </C.AddItem>
             <C.FilterItem>
