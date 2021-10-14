@@ -22,12 +22,12 @@ export const TableItem = ({ item }: Props) => {
     const SetIcon = (category: string) => {
         switch (category) {
             case 'alimentação':
-                return <FaUtensils data-tip="Alimentação" data-for="tip-top"/>
+                return <FaUtensils data-tip="Alimentação" data-for="tip-top" />
                 break;
             case 'Aluguel':
-                return <FaHome data-tip="Moradia" data-for="tip-top"/>
+                return <FaHome data-tip="Moradia" data-for="tip-top" />
             case 'Salário':
-                return <FaHandHoldingUsd data-tip="Salário" data-for="tip-top"/>
+                return <FaHandHoldingUsd data-tip="Salário" data-for="tip-top" />
             default:
                 break;
         }
@@ -38,8 +38,6 @@ export const TableItem = ({ item }: Props) => {
             <C.TableColumn>{formatDate(item.date)}</C.TableColumn>
             <C.TableColumn>
                 <C.Category
-                    data-tip="TESTE"
-                    data-for="tip-top"
                     bgcolor={categories[item.category].color}
                 >
                     {SetIcon(categories[item.category].title)}
@@ -54,8 +52,18 @@ export const TableItem = ({ item }: Props) => {
             </C.TableColumn>
             <C.TableColumn>
                 <C.IconArea>
-                    <FaEdit data-tip="Editar" data-for="tip-top"/>
-                    <FaTrash data-tip="Excluir" data-for="tip-top"/>
+                    <C.IconItem
+                        data-tip="Editar"
+                        data-for="tip-top"
+                    >
+                        <FaEdit />
+                    </C.IconItem>
+                    <C.IconItem
+                        data-tip="Excluir"
+                        data-for="tip-top"
+                    >
+                        <FaTrash />
+                    </C.IconItem>
                 </C.IconArea>
             </C.TableColumn>
         </C.TableLine>

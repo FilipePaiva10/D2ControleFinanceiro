@@ -30,7 +30,7 @@ export const Content = styled.div`
     box-shadow: 0px 0px 5px #CCC;
     z-index: 999;
     flex: 1;
-    margin-top: -100px;
+    margin-top: -30px;
 `;
 
 export const Body = styled.div`

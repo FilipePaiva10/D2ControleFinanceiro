@@ -39,3 +39,8 @@ export const IconArea = styled.div`
         }
     }
 `;
+
+
+export const IconItem = styled.div`
+  
+`;

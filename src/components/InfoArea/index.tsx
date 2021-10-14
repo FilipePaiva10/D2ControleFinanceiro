@@ -50,15 +50,15 @@ export const InfoArea = ({ currentMonth, onChangeMonth, income, expense }: Props
                     data-tip="Avançar Mês"
                     data-for="tip-top"
                 >
-                    <FaArrowAltCircleRight 
-                         color={theme.background.secundary}
+                    <FaArrowAltCircleRight
+                        color={theme.background.secundary}
                     />
                 </C.MonthArrow>
             </C.MonthArea>
             <C.ResumeArea>
-                <ResumeItem title="Receitas" value={income} />
-                <ResumeItem title="Despesas" value={expense} />
-                <ResumeItem title="Balanço" value={income - expense} color={(income - expense) < 0 ? '#dc3545' : '#28a745'} />
+                <ResumeItem tipTitle="Valor arrecadado" title="Receitas" value={income} />
+                <ResumeItem tipTitle="Valor Gasto" title="Despesas" value={expense} />
+                <ResumeItem tipTitle="Diferença entre Receita - Despesa" title="Balanço" value={income - expense} color={(income - expense) < 0 ? '#dc3545' : '#28a745'} />
             </C.ResumeArea>
         </C.Container>
     )
