@@ -4,7 +4,7 @@
 
     <img src="./github/AppFinanceiro.gif" alt="gif">
 
-## Fui além 
+## 😍 Fui além 
 
 -  ✔️ Implementação de ThemeSwitcher
 -  ✔️ Adicionar Item
