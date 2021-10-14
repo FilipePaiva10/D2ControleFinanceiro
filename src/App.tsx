@@ -18,6 +18,7 @@ import { InfoArea } from "./components/InfoArea";
 import { categories } from "./data/categories";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import ReactTooltip from "react-tooltip";
+import ActionArea from "./components/ActionArea";
 
 
 
@@ -55,12 +56,12 @@ const App = () => {
     let incomeCount = 0;
     let expenseCount = 0;
 
-    for(let i in filteredList){
-       if(categories[filteredList[i].category].expense){
-         expenseCount += filteredList[i].value;
-       }else{
-         incomeCount += filteredList[i].value;
-       }
+    for (let i in filteredList) {
+      if (categories[filteredList[i].category].expense) {
+        expenseCount += filteredList[i].value;
+      } else {
+        incomeCount += filteredList[i].value;
+      }
     }
 
     setIncome(incomeCount);
@@ -73,7 +74,10 @@ const App = () => {
       <app.Container>
         <app.Header>
           <app.HeaderText>Controle Financeiro</app.HeaderText>
-          <ThemeSwitcher toogleTheme={toggleTheme}/>
+          <ThemeSwitcher
+            data-tip="Mudar tema"
+            data-for="tip-top"
+            toogleTheme={toggleTheme} />
         </app.Header>
         <app.Body>
           <InfoArea
@@ -81,6 +85,9 @@ const App = () => {
             onChangeMonth={handleChangeMonth}
             income={income}
             expense={expense}
+          />
+          <ActionArea
+
           />
           <TableArea
             list={filteredList}
