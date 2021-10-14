@@ -7,7 +7,7 @@ import { categories } from '../../data/categories';
 import { FaPlusCircle } from "@react-icons/all-files/fa/FaPlusCircle";
 
 type Props = {
-    onAddItem: () => void;
+    onShowModal: () => void;
 }
 
 type categorieOption = {
@@ -15,7 +15,7 @@ type categorieOption = {
     title?: string;
 }
 
-const ActionArea = ({onAddItem} : Props) => {
+const ActionArea = ({onShowModal} : Props) => {
 
     const [categoriesOption, setCategoriesOption] = useState<categorieOption[]>([]);
 
@@ -33,7 +33,7 @@ const ActionArea = ({onAddItem} : Props) => {
     }
 
     const handleAddItem = () => {
-        onAddItem();
+        onShowModal();
     }
 
     useEffect(() => {

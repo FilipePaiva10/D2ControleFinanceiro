@@ -8,9 +8,11 @@ import ReactTooltip from "react-tooltip";
 
 type Props = {
     list: Item[];
+    onEditItem: (item: Item) => void;
+    onDeleteItem: (str: string) => void;
 }
 
-export const TableArea = ({ list } : Props ) => {
+export const TableArea = ({ list, onEditItem, onDeleteItem }: Props) => {
     return (
         <T.table>
             <thead>
@@ -24,7 +26,12 @@ export const TableArea = ({ list } : Props ) => {
             </thead>
             <tbody>
                 {list.map((item, key) => (
-                   <TableItem key={key}  item={item} />
+                    <TableItem
+                    key={key}
+                    item={item} 
+                    handleEditItem={onEditItem}
+                    handleDeleteItem={onDeleteItem}
+                    />
                 ))}
             </tbody>
             <ReactTooltip id="tip-top" place="top" effect="solid" />

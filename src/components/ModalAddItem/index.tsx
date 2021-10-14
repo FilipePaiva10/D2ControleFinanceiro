@@ -1,15 +1,15 @@
 import * as C from './styled';
 
 type Props = {
-    onCloseModal: () => void;
-    onAddItem?: () => void;
+    onShowModal: () => void;
+    onAddItem: () => void;
 }
 
-const ModalAddItem = ({ onCloseModal, onAddItem }: Props) => {
+const ModalAddItem = ({ onShowModal, onAddItem}: Props) => {
 
     const closeModal = (e: any) => {
         if (e.target.classList.contains("modal")) {
-            onCloseModal();
+            onShowModal();
         }
         else {
 
@@ -17,11 +17,8 @@ const ModalAddItem = ({ onCloseModal, onAddItem }: Props) => {
     }
 
     const handleAddItem = () => {
-        if(true){
-            alert("ok")
-        }else{
-
-        }
+        onAddItem();
+        onShowModal();
     }
 
     return (

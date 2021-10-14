@@ -15,9 +15,11 @@ import { FaHome } from "@react-icons/all-files/fa/FaHome";
 
 type Props = {
     item: Item
+    handleEditItem: (item: Item) => void;
+    handleDeleteItem: (str: string) => void;
 }
 
-export const TableItem = ({ item }: Props) => {
+export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => {
 
     const SetIcon = (category: string) => {
         switch (category) {
@@ -31,7 +33,15 @@ export const TableItem = ({ item }: Props) => {
             default:
                 break;
         }
-    }
+    };
+
+    const onEditItem = (item: Item) => {
+        
+    };
+
+    const onDeleteItem = ({title} : Item) => {
+        handleDeleteItem(title);
+    };
 
     return (
         <C.TableLine>
@@ -56,13 +66,17 @@ export const TableItem = ({ item }: Props) => {
                         data-tip="Editar"
                         data-for="tip-top"
                     >
-                        <FaEdit />
+                        <FaEdit
+                            onClick={() => onEditItem(item)}
+                        />
                     </C.IconItem>
                     <C.IconItem
                         data-tip="Excluir"
                         data-for="tip-top"
                     >
-                        <FaTrash />
+                        <FaTrash
+                            onClick={() => onDeleteItem(item)}
+                        />
                     </C.IconItem>
                 </C.IconArea>
             </C.TableColumn>

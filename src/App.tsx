@@ -48,11 +48,37 @@ const App = () => {
   };
 
   const handleShowModal = () => {
-      setShowModal(!showModal);
+    setShowModal(!showModal);
   }
 
   const handleAddItem = () => {
+
+    let newlist: Item[] = [...list];
+
+    newlist.push({
+      date: new Date(2021, 9, 12),
+      category: 'food',
+      title: 'McDonalds',
+      value: 34.15
+    });
+
+    setList(newlist);
+
     handleShowModal();
+  }
+
+  const handleEditItem = (item: Item) => {
+
+  }
+
+  const handleDeleteItem = (title: string) => {
+
+    let newlist: Item[] = list.filter((item: Item) => {
+        if(item.title != title)
+        return item;
+    });
+
+    setList(newlist);
   }
 
   useEffect(() => {
@@ -97,17 +123,20 @@ const App = () => {
             expense={expense}
           />
           <ActionArea
-            onAddItem={handleAddItem}
+            onShowModal={handleShowModal}
           />
           <TableArea
             list={filteredList}
+            onEditItem={handleEditItem}
+            onDeleteItem={handleDeleteItem}
           />
         </app.Body>
         <ReactTooltip id="tip-top" place="top" effect="solid" />
       </app.Container>
       {showModal &&
         <ModalAddItem
-          onCloseModal={handleShowModal}
+          onShowModal={handleShowModal}
+          onAddItem={handleAddItem}
         />
       }
       <GlobalStyles />
