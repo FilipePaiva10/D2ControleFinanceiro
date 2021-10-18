@@ -40,7 +40,7 @@ Neste projeto foram usadas essas tecnologias:
 
 ## Clonar o repositório
 ```bash
-$ git clone https://github.com/FilipePaiva10/D1TaskReact.git
+$ git clone https://github.com/FilipePaiva10/D2ControleFinanceiro.git
 ```
 
 ## Acessar Pasta
