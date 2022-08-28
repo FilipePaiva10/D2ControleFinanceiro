@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as C from './styled';
 
-import { items } from '../../data/items';
 import { categories } from '../../data/categories';
 
 import { FaPlusCircle } from "@react-icons/all-files/fa/FaPlusCircle";
@@ -24,12 +23,14 @@ const ActionArea = ({onShowModal, onSearchText,  onSetCategory} : Props) => {
     const getCategories = () => {
         let newCategories = [];
 
-        for (let i in items) {
+        for (let i in categories) {
             newCategories.push({
-                category: items[i].category,
-                title: categories[items[i].category].title
+                category: i,
+                title: categories[i].title
             });
         }
+
+        console.log(newCategories);
 
         setCategoriesOption(newCategories);
     }

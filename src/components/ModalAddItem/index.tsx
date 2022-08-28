@@ -29,10 +29,10 @@ const ModalAddItem = ({ onShowModal, onAddItem }: Props) => {
     const getCategories = () => {
         let newCategories = [];
 
-        for (let i in items) {
+        for (let i in categories) {
             newCategories.push({
-                category: items[i].category,
-                title: categories[items[i].category].title
+                category: i,
+                title: categories[i].title
             });
         }
 

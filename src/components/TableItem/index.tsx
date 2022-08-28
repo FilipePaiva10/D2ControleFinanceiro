@@ -25,7 +25,6 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
         switch (category) {
             case 'alimentação':
                 return <FaUtensils data-tip="Alimentação" data-for="tip-top" />
-                break;
             case 'Aluguel':
                 return <FaHome data-tip="Moradia" data-for="tip-top" />
             case 'Salário':
