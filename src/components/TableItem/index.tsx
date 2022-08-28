@@ -10,6 +10,9 @@ import { FaTrash } from "@react-icons/all-files/fa/FaTrash";
 import { FaUtensils } from "@react-icons/all-files/fa/FaUtensils";
 import { FaHandHoldingUsd } from "@react-icons/all-files/fa/FaHandHoldingUsd";
 import { FaHome } from "@react-icons/all-files/fa/FaHome";
+import { FaGasPump } from "@react-icons/all-files/fa/FaGasPump";
+
+import ReactTooltip from "react-tooltip";
 
 
 
@@ -29,6 +32,8 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
                 return <FaHome data-tip="Moradia" data-for="tip-top" />
             case 'Salário':
                 return <FaHandHoldingUsd data-tip="Salário" data-for="tip-top" />
+            case 'Combustível':
+                return <FaGasPump data-tip="Combustível" data-for="tip-top" />
             default:
                 break;
         }
@@ -80,6 +85,7 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
                     </C.IconItem>
                 </C.IconArea>
             </C.TableColumn>
+            <ReactTooltip id="tip-top" place="top" effect="solid" />
         </C.TableLine>
     );
 }
