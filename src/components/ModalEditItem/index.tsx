@@ -6,6 +6,7 @@ import * as C from './styled';
 type Props = {
     onShowModal: () => void;
     onAddItem: ({ title, category, value }: Item) => void;
+    currentItem: Item
 }
 
 type categorieOption = {
@@ -127,7 +128,7 @@ const ModalAddItem = ({ onShowModal, onAddItem }: Props) => {
                 <C.Footer>
                     <C.BtnAdd
                         onClick={handleAddItem}
-                    >Adicionar</C.BtnAdd>
+                    >Editar</C.BtnAdd>
                 </C.Footer>
             </C.Content>
         </C.Container>

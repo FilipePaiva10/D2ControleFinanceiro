@@ -55,7 +55,7 @@ export const CategorySelect = styled.select<{category : string}>`
     width: 100%;
     padding: 10px;
     outline: 0;
-    border: 2px solid ${props => props.category !== '' ? '#28a745' : '#dc3545'};
+    border: 2px solid ${props => props.category != '' ? '#28a745' : '#dc3545'};
     border-radius: 5px;
     margin-top: 5px;    
 `;
@@ -81,7 +81,7 @@ export const InputTitle = styled.input<{title: string}>`
     width: 100%;
     padding: 10px;
     outline: 0;
-    border: 2px solid ${props => props.title !== '' ? '#28a745' : '#dc3545'};
+    border: 2px solid ${props => props.title != '' ? '#28a745' : '#dc3545'};
     border-radius: 5px;
     margin-top: 5px;
 `;
@@ -105,7 +105,7 @@ export const InputValue = styled.input<{price: number}>`
     width: 100%;
     padding: 10px;
     outline: 0;
-    border: 2px solid ${props => props.price !== 0 ? '#28a745' : '#dc3545'};;
+    border: 2px solid ${props => props.price != 0 ? '#28a745' : '#dc3545'};;
     border-radius: 5px;
     margin-top: 5px;
 `;
