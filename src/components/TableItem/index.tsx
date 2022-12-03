@@ -2,6 +2,7 @@ import * as C from './styled';
 
 import { Item } from '../../types/Items';
 import { formatDate } from '../../helpers/dateFilter';
+import { formatCurrency } from '../../helpers/formatCurrency';
 import { categories } from '../../data/categories';
 
 import { FaEdit } from "@react-icons/all-files/fa/FaEdit";
@@ -63,7 +64,7 @@ export const TableItem = ({ item, handleEditItem ,handleDeleteItem }: Props) => 
                 <C.Value
                     color={categories[item.category].expense ? '#dc3545' : '#28a745'}
                 >
-                    R$ {item.value}</C.Value>
+                    {formatCurrency(item.value)}</C.Value>
             </C.TableColumn>
             <C.TableColumn>
                 <C.IconArea>
