@@ -56,9 +56,9 @@ export const InfoArea = ({ currentMonth, onChangeMonth, income, expense }: Props
                 </C.MonthArrow>
             </C.MonthArea>
             <C.ResumeArea>
-                <ResumeItem tipTitle="Valor arrecadado" title="Receitas" value={parseFloat(income.toFixed(2))} />
-                <ResumeItem tipTitle="Valor Gasto" title="Despesas" value={parseFloat(expense.toFixed(2))} />
-                <ResumeItem tipTitle="Diferença entre Receita - Despesa" title="Balanço" value={parseFloat((income - expense).toFixed(2))} color={(income - expense) < 0 ? '#dc3545' : '#28a745'} />
+                <ResumeItem tipTitle="Valor arrecadado" title="Receitas" value={income} />
+                <ResumeItem tipTitle="Valor Gasto" title="Despesas" value={expense} />
+                <ResumeItem tipTitle="Diferença entre Receita - Despesa" title="Balanço" value={income - expense} color={(income - expense) < 0 ? '#dc3545' : '#28a745'} />
             </C.ResumeArea>
         </C.Container>
     )
